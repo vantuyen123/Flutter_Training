@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
 Widget buildErrorWidget(Object error) {
-  return Center(child:  Text('Occured $error'),);
+  return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Error occured: $error"),
+        ],
+      ));
 }
 
 Widget buildLoadingWidget() {
-  return Container(
-    width: 50,
-    height: 50,
-    child: CircularProgressIndicator(),
-  );
+  return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [],
+      ));
 }

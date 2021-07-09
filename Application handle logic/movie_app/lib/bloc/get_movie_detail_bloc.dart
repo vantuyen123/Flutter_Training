@@ -14,10 +14,12 @@ class MovieDetailBloc{
 
   void drainStream(){ _subject.value = null;}
 
-  void disopse() async{
+  void dispose() async{
     await _subject.drain();
     _subject.close();
   }
 
   BehaviorSubject<MovieDetailResponse> get subject => _subject;
 }
+
+final movieDetailBloc = MovieDetailBloc();
