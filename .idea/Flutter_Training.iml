@@ -11,6 +11,8 @@
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_1/build" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_3/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_3/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_5/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_5/build" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/movie_app/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/movie_app/build" />
     </content>
