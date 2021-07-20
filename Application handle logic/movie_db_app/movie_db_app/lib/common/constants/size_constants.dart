@@ -11,6 +11,14 @@ class Sizes {
 
   static double dimen_6 = 6;
 
+  static double dimen_300 = 300;
+
+  static double dimen_8 = 8;
+
+  static double dimen_18 = 18;
+
+  static double dimen_32 = 32;
+
   Sizes._();
 
   static const double dimen_0 = 0;
