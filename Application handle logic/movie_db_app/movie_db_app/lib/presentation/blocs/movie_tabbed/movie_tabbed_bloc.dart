@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_db_app/domain/entities/app_error.dart';
 import 'package:movie_db_app/domain/entities/movie_entity.dart';

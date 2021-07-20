@@ -7,6 +7,7 @@ import 'package:movie_db_app/presentation/blocs/movie_carousel/movie_carousel_bl
 import 'package:movie_db_app/presentation/blocs/movie_carousel/movie_carousel_event.dart';
 import 'package:movie_db_app/presentation/blocs/movie_carousel/movie_carousel_state.dart';
 import 'package:movie_db_app/presentation/blocs/movie_tabbed/movie_tabbed_bloc.dart';
+import 'package:movie_db_app/presentation/journeys/drawer/navigation_drawer.dart';
 import 'package:movie_db_app/presentation/journeys/home/movie_tabbed/movie_tabbed_widget.dart';
 
 import 'movie_carousel/movie_carousel_widget.dart';
@@ -50,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         BlocProvider(create: (context) => movieTabbedBloc)
       ],
       child: Scaffold(
+        drawer: const NavigationDrawer(),
         body: BlocBuilder<MovieCarouselBloc, MovieCarouselState>(
           bloc: movieCarouselBloc,
           builder: (context, state) {
