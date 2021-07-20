@@ -5,6 +5,8 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/Application handle logic/movie_app/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/Application handle logic/movie_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Application handle logic/movie_db_app/movie_db_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Application handle logic/movie_db_app/movie_db_app/build" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui/build" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_1/.pub" />
@@ -17,6 +19,8 @@
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_5/build" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_6/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_6/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_7/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_7/build" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/movie_app/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/movie_app/build" />
     </content>
