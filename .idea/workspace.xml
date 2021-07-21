@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab6fc095-a75a-4131-a8ad-f41dcb96b1f8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Flutter_Training.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Flutter_Training.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,14 +74,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="502" height="226" key="Git.Branch.Popup" timestamp="1626057932218">
+    <state width="506" height="230" key="Git.Branch.Popup" timestamp="1626689067050">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="502" height="226" key="Git.Branch.Popup/0.0.1920.1040@0.0.1920.1040" timestamp="1626057932218" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1626057938852">
+    <state width="506" height="230" key="Git.Branch.Popup/0.0.1920.1040@0.0.1920.1040" timestamp="1626689067050" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1626689027829">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1626057938852" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1626689027829" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1626057925826">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
