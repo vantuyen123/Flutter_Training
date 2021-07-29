@@ -10,6 +10,8 @@ class AppLocalizations{
 
   AppLocalizations(this.locale);
 
+  static AppLocalizations of(context) => Localizations.of<AppLocalizations>(context,AppLocalizations);
+
   Map<String,String> _localizedStrings;
 
   Future<bool> load() async{
