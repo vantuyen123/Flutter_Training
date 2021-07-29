@@ -1,8 +1,8 @@
 {
   "favoriteMovies": "Peliculas favoritas",
-  "languages": "Idioma",
-  "feedback": "Realimentacion",
+  "language": "Idioma",
   "about": "Acerca de",
+  "feedback": "Realimentación",
   "popular": "POPULAR",
   "now": "AHORA",
   "soon": "PRONTO"
