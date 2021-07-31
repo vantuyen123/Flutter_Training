@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:movie_db_app/domain/entities/app_error.dart';
 import 'package:movie_db_app/domain/entities/movie_entity.dart';
 
 abstract class MovieTabbedState extends Equatable {
@@ -23,6 +25,11 @@ class MovieTabChanged extends MovieTabbedState {
 }
 
 class MovieTabLoadError extends MovieTabbedState {
-  const MovieTabLoadError({int currentTabIndex})
+
+  final AppErrorType errorType;
+
+
+  const MovieTabLoadError({int currentTabIndex,@required this.errorType})
       : super(currentTabIndex: currentTabIndex);
+
 }

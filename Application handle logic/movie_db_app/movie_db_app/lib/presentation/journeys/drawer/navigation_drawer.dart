@@ -5,12 +5,14 @@ import 'package:movie_db_app/common/constants/language.dart';
 import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/constants/translation_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
+import 'package:movie_db_app/common/extensions/string_extensions.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_bloc.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_event.dart';
 import 'package:movie_db_app/presentation/journeys/drawer/navigation_expanded_list_tile.dart';
 import 'package:movie_db_app/presentation/journeys/drawer/navigation_list_item.dart';
+import 'package:movie_db_app/presentation/widgets/app_dialog.dart';
 import 'package:movie_db_app/presentation/widgets/logo.dart';
-import 'package:movie_db_app/common/extensions/string_extensions.dart';
+import 'package:wiredash/wiredash.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer();
@@ -53,11 +55,37 @@ class NavigationDrawer extends StatelessWidget {
                     ),
                   );
                 }),
-            NavigationListItem(title: TranslationConstants.feedback.t(context), onPressed: () {}),
-            NavigationListItem(title: TranslationConstants.about.t(context), onPressed: () {}),
+            NavigationListItem(
+                title: TranslationConstants.feedback.t(context),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Wiredash.of(context).show();
+                }),
+            NavigationListItem(
+                title: TranslationConstants.about.t(context),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  _showDialog(context);
+                }),
           ],
         ),
       ),
+    );
+  }
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AppDialog(
+            title: TranslationConstants.about,
+            description: TranslationConstants.aboutDescription,
+            buttonText: TranslationConstants.okay,
+            image: Image.asset(
+              'assets/pngs/tmdb_logo.png',
+              height: Sizes.dimen_32.h,
+            ));
+      },
     );
   }
 }
