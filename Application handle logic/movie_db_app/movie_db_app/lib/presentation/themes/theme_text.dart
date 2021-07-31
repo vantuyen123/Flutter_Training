@@ -12,8 +12,14 @@ class ThemeText {
   static TextStyle get _whiteHeadline6 => _poppinsTextTheme.headline6
       .copyWith(fontSize: Sizes.dimen_20.sp, color: Colors.white);
 
+  static TextStyle get _whiteHeadline5 => _poppinsTextTheme.headline5
+      .copyWith(fontSize: Sizes.dimen_24.sp, color: Colors.white);
+
   static TextStyle get whiteSubtitle1 => _poppinsTextTheme.subtitle1
       .copyWith(fontSize: Sizes.dimen_16.sp, color: Colors.white);
+
+  static TextStyle get _whiteButton => _poppinsTextTheme.button
+      .copyWith(fontSize: Sizes.dimen_14.sp, color: Colors.white);
 
   static TextStyle get whiteBodyText2 => _poppinsTextTheme.bodyText2.copyWith(
         color: Colors.white,
@@ -24,14 +30,14 @@ class ThemeText {
       );
 
   static getTextTheme() => TextTheme(
-        headline6: _whiteHeadline6,
-        subtitle1: whiteSubtitle1,
-        bodyText2: whiteBodyText2,
-      );
+      headline5: _whiteHeadline5,
+      headline6: _whiteHeadline6,
+      subtitle1: whiteSubtitle1,
+      bodyText2: whiteBodyText2,
+      button: _whiteButton);
 }
 
 extension ThemeTextExtension on TextTheme {
   TextStyle get royalBlueSubtitle1 => subtitle1.copyWith(
       color: AppColor.royalBlue, fontWeight: FontWeight.w600);
 }
-
