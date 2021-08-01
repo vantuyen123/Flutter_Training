@@ -21,7 +21,8 @@ class NavigationListItem extends StatelessWidget {
         ]),
         child: ListTile(
           title: Text(
-            title,style: Theme.of(context).textTheme.subtitle1,
+            title,
+            style: Theme.of(context).textTheme.subtitle1,
           ),
         ),
       ),

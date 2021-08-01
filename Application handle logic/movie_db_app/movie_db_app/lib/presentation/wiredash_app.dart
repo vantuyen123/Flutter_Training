@@ -18,7 +18,7 @@ class WiredashApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wiredash(
-        projectId: "movie_app - 7gaqrqd",
+        projectId: "movie_app-7gaqrqd",
         secret: "pl0bg89eqr42hl635kty53rwlke48n3tctsxllgxo2bq3zc8",
         navigatorKey: navigatorKey,
         theme: WiredashThemeData(
@@ -29,7 +29,7 @@ class WiredashApp extends StatelessWidget {
           dividerColor: AppColor.vulcan
         ),
         options: WiredashOptionsData(
-          locale: Locale.fromSubtags(languageCode: languageCode )
+          locale: Locale.fromSubtags(languageCode: languageCode)
         ),
         child: child);
   }
