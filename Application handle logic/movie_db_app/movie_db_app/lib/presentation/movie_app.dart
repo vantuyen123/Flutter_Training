@@ -44,7 +44,6 @@ class _MovieAppState extends State<MovieApp> {
         child: BlocBuilder<LanguageBloc, LanguageState>(
           builder: (context, state) {
             if (state is LanguageLoaded) {
-              print('$state');
               return WiredashApp(
                 navigatorKey: _navigatorKey,
                 languageCode: state.locale.languageCode,
@@ -59,8 +58,7 @@ class _MovieAppState extends State<MovieApp> {
                       visualDensity: VisualDensity.adaptivePlatformDensity,
                       textTheme: ThemeText.getTextTheme(),
                       appBarTheme: const AppBarTheme(elevation: 0)),
-                  supportedLocales:
-                      Languages.languages.map((e) => Locale(e.code)).toList(),
+                  supportedLocales: Languages.languages.map((e) => Locale(e.code)).toList(),
                   locale: state.locale,
                   localizationsDelegates: [
                     AppLocalizations.delegate,
