@@ -7,6 +7,7 @@ import 'package:movie_db_app/presentation/blocs/movie_carousel/movie_carousel_bl
 import 'package:movie_db_app/presentation/blocs/movie_carousel/movie_carousel_event.dart';
 import 'package:movie_db_app/presentation/blocs/movie_carousel/movie_carousel_state.dart';
 import 'package:movie_db_app/presentation/blocs/movie_tabbed/movie_tabbed_bloc.dart';
+import 'package:movie_db_app/presentation/blocs/search_movie/search_bloc.dart';
 import 'package:movie_db_app/presentation/journeys/drawer/navigation_drawer.dart';
 import 'package:movie_db_app/presentation/journeys/home/movie_tabbed/movie_tabbed_widget.dart';
 
@@ -22,12 +23,13 @@ class _HomeScreenState extends State<HomeScreen> {
   MovieCarouselBloc movieCarouselBloc;
   MovieBackdropBloc movieBackdropBloc;
   MovieTabbedBloc movieTabbedBloc;
-
+  SearchMovieBloc searchMovieBloc;
   @override
   void initState() {
     super.initState();
     movieTabbedBloc = getItInstance<MovieTabbedBloc>();
     movieCarouselBloc = getItInstance<MovieCarouselBloc>();
+    searchMovieBloc = getItInstance<SearchMovieBloc>();
     movieCarouselBloc.add(CarouselLoadEvent());
     movieBackdropBloc = movieCarouselBloc.movieBackdropBloc;
   }
@@ -39,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     movieCarouselBloc.close();
     movieBackdropBloc.close();
     movieTabbedBloc.close();
+    searchMovieBloc?.close();
   }
 
   @override
@@ -49,7 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
           create: (context) => movieCarouselBloc,
         ),
         BlocProvider(create: (context) => movieBackdropBloc),
-        BlocProvider(create: (context) => movieTabbedBloc)
+        BlocProvider(create: (context) => movieTabbedBloc),
+        BlocProvider(create: (context) => searchMovieBloc),
       ],
       child: Scaffold(
         drawer: const NavigationDrawer(),

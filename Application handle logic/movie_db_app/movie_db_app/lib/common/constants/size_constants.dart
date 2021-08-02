@@ -27,6 +27,8 @@ class Sizes {
 
   static const double dimen_200 = 200;
 
+  static const double dimen_64 = 64;
+
   Sizes._();
 
   static const double dimen_0 = 0;
