@@ -3,21 +3,29 @@ class Sizes {
 
   static var dimen_230 = 230;
 
-  static double dimen_40 = 40;
+  static const double dimen_40 = 40;
 
-  static double dimen_1 = 1;
+  static const double dimen_1 = 1;
 
-  static double dimen_80 = 80;
+  static const double dimen_80 = 80;
 
-  static double dimen_6 = 6;
+  static const double dimen_6 = 6;
 
-  static double dimen_300 = 300;
+  static const double dimen_300 = 300;
 
-  static double dimen_8 = 8;
+  static const double dimen_8 = 8;
 
-  static double dimen_18 = 18;
+  static const double dimen_18 = 18;
 
-  static double dimen_32 = 32;
+  static const double dimen_32 = 32;
+
+  static const double dimen_105 = 105;
+
+  static const double dimen_100 = 100;
+
+  static const double dimen_160 = 160;
+
+  static const double dimen_200 = 200;
 
   Sizes._();
 
