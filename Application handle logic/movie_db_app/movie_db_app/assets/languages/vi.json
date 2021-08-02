@@ -11,5 +11,7 @@
   "aboutDescription": "sản phẩm này sử dụng TMDb API nhưng không được TMDb xác nhận hoặc chứng nhận. Ứng dụng này được phát triển cho mục đích giáo dục.",
   "noMovies": "Xin lỗi, không có phim nào trong phần này",
   "somethingWentWrong": "Đã xảy ra lỗi ...",
-  "retry": "Thử lại"
+  "retry": "Thử lại",
+  "cast": "Dàn diễn viên",
+  "watchTrailers": "Xem Trailers"
 }

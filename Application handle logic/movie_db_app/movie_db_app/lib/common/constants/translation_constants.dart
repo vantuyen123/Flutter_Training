@@ -3,6 +3,10 @@ class TranslationConstants {
 
   static const String retry = "retry";
 
+  static const String cast = "cast";
+
+  static const String watchTrailers = "watchTrailers";
+
   TranslationConstants._();
 
   static const String favoriteMovies = 'favoriteMovies';
