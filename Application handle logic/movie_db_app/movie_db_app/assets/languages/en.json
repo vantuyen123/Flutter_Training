@@ -13,5 +13,6 @@
   "somethingWentWrong": "Something went wrong...",
   "retry": "Retry",
   "cast": "Cast",
-  "watchTrailers": "Watch Trailers"
+  "watchTrailers": "Watch Trailers",
+  "noMoviesSearch": "No movies found, please search with another word"
 }

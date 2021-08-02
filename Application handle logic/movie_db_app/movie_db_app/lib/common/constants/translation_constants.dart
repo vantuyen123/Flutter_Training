@@ -7,6 +7,8 @@ class TranslationConstants {
 
   static const String watchTrailers = "watchTrailers";
 
+  static const String noMoviesSearch = "noMoviesSearch";
+
   TranslationConstants._();
 
   static const String favoriteMovies = 'favoriteMovies';

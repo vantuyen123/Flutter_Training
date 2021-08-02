@@ -13,5 +13,6 @@
   "somethingWentWrong": "Algo salió mal...",
   "retry": "Rever",
   "cast": "Emitir",
-  "watchTrailers": "Ver trailers"
+  "watchTrailers": "Ver trailers",
+  "noMoviesSearch": "No movies found, please search with another word"
 }
