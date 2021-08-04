@@ -9,6 +9,8 @@ class TranslationConstants {
 
   static const String noMoviesSearch = "noMoviesSearch";
 
+  static const String noFavoriteMovies = "noFavoriteMovies";
+
   TranslationConstants._();
 
   static const String favoriteMovies = 'favoriteMovies';

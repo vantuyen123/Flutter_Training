@@ -34,23 +34,28 @@ dependencies:
   flutter_svg: ^0.20.0-nullsafety.3
   cached_network_image: ^3.1.0
   youtube_player_flutter: ^8.0.0
+  hive:
   wiredash:
   flutter_localizations:
     sdk: flutter
+  path_provider:
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  hive_generator: ^1.1.0
+  build_runner:
+
 flutter:
 
   uses-material-design: true
 
   assets:
-   - assets/pngs/
-   - assets/svgs/
-   - assets/languages/
+    - assets/pngs/
+    - assets/svgs/
+    - assets/languages/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -5,7 +5,7 @@ import 'package:movie_db_app/domain/entities/no_params.dart';
 import 'package:movie_db_app/domain/repositories/movie_repository.dart';
 import 'package:movie_db_app/domain/usecase/usecase.dart';
 
-class GetComingSoon extends Usecase<List<MovieEntity>,NoParams>{
+class GetComingSoon extends UseCase<List<MovieEntity>,NoParams>{
   final MovieRepository repository;
 
   GetComingSoon(this.repository);
