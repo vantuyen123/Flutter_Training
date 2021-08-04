@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movie_db_app/common/constants/language.dart';
+import 'package:movie_db_app/common/constants/route_constants.dart';
 import 'package:movie_db_app/di/get_it.dart';
 import 'package:movie_db_app/presentation/app_localizations.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_bloc.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_event.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_state.dart';
-import 'package:movie_db_app/presentation/journeys/home/home_screen.dart';
 import 'package:movie_db_app/presentation/themes/app_color.dart';
 import 'package:movie_db_app/presentation/themes/theme_text.dart';
+import 'package:movie_db_app/presentation/widgets/fade_page_route_builder.dart';
+import 'package:movie_db_app/presentation/widgets/routes.dart';
 import 'package:movie_db_app/presentation/wiredash_app.dart';
 
 import '../common/screenutil/screenutil.dart';
@@ -60,14 +62,26 @@ class _MovieAppState extends State<MovieApp> {
                       visualDensity: VisualDensity.adaptivePlatformDensity,
                       textTheme: ThemeText.getTextTheme(),
                       appBarTheme: const AppBarTheme(elevation: 0)),
-                  supportedLocales: Languages.languages.map((e) => Locale(e.code)).toList(),
+                  supportedLocales:
+                      Languages.languages.map((e) => Locale(e.code)).toList(),
                   locale: state.locale,
                   localizationsDelegates: [
                     AppLocalizations.delegate,
                     GlobalMaterialLocalizations.delegate,
                     GlobalWidgetsLocalizations.delegate
                   ],
-                  home: HomeScreen(),
+                  builder: (context, child) {
+                    return child;
+                  },
+                  initialRoute: RouteList.initial,
+                  onGenerateRoute: (RouteSettings settings) {
+                    final routes = Routes.getRoutes(settings);
+                    final WidgetBuilder builder = routes[settings.name];
+                    return FadePageRouteBuilder(
+                      builder: builder,
+                      settings: settings,
+                    );
+                  },
                 ),
               );
             } else {
