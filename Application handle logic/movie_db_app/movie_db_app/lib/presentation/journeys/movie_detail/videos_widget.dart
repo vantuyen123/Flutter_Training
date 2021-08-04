@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_db_app/common/constants/route_constants.dart';
 import 'package:movie_db_app/common/constants/translation_constants.dart';
 import 'package:movie_db_app/presentation/blocs/videos/videos_bloc.dart';
 import 'package:movie_db_app/presentation/blocs/videos/videos_state.dart';
 import 'package:movie_db_app/presentation/journeys/watch_video/watch_video_arguments.dart';
-import 'package:movie_db_app/presentation/journeys/watch_video/watch_video_screen.dart';
 import 'package:movie_db_app/presentation/widgets/button.dart';
 
 class VideosWidget extends StatelessWidget {
@@ -23,13 +23,8 @@ class VideosWidget extends StatelessWidget {
             return Button(
               text: TranslationConstants.watchTrailers,
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => WatchVideoScreen(
-                      watchVideoArguments: WatchVideoArguments(_videos),
-                    ),
-                  ),
-                );
+                Navigator.of(context).pushNamed(RouteList.watchTrailer,
+                    arguments: WatchVideoArguments(_videos));
               },
             );
           } else {
