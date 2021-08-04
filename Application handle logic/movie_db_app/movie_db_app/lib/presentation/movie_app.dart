@@ -6,6 +6,7 @@ import 'package:movie_db_app/common/constants/language.dart';
 import 'package:movie_db_app/di/get_it.dart';
 import 'package:movie_db_app/presentation/app_localizations.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_bloc.dart';
+import 'package:movie_db_app/presentation/blocs/language/language_event.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_state.dart';
 import 'package:movie_db_app/presentation/journeys/home/home_screen.dart';
 import 'package:movie_db_app/presentation/themes/app_color.dart';
@@ -28,6 +29,7 @@ class _MovieAppState extends State<MovieApp> {
     // TODO: implement initState
     super.initState();
     _languageBloc = getItInstance<LanguageBloc>();
+    _languageBloc.add(LoadPreferredLanguageEvent());
   }
 
   @override

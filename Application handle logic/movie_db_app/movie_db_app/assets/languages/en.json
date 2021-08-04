@@ -14,5 +14,6 @@
   "retry": "Retry",
   "cast": "Cast",
   "watchTrailers": "Watch Trailers",
-  "noMoviesSearch": "No movies found, please search with another word"
+  "noMoviesSearch": "No movies found, please search with another word",
+  "noFavoriteMovies": "No Favorite Movie"
 }
