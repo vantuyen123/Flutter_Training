@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_db_app/common/constants/route_constants.dart';
 import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/data/core/api_constants.dart';
-import 'package:movie_db_app/presentation/themes/theme_text.dart';
 import 'package:movie_db_app/domain/entities/movie_entity.dart';
 import 'package:movie_db_app/presentation/journeys/movie_detail/movie_detail_argument.dart';
-import 'package:movie_db_app/presentation/journeys/movie_detail/movie_detail_screen.dart';
+import 'package:movie_db_app/presentation/themes/theme_text.dart';
 
 class SearchMovieCard extends StatelessWidget {
   final MovieEntity movie;
@@ -21,9 +21,8 @@ class SearchMovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => MovieDetailScreen(
-                movieDetailArgument: MovieDetailArgument(movie.id))));
+        Navigator.of(context).pushNamed(RouteList.movieDetail,
+            arguments: MovieDetailArgument(movie.id));
       },
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -35,15 +34,14 @@ class SearchMovieCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(Sizes.dimen_4.w),
                 child: CachedNetworkImage(
-                  imageUrl:
-                      '${ApiConstants.BASE_IMAGE_URL}${movie.posterPath}',
+                  imageUrl: '${ApiConstants.BASE_IMAGE_URL}${movie.posterPath}',
                   width: Sizes.dimen_80.w,
                 ),
               ),
             ),
             Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

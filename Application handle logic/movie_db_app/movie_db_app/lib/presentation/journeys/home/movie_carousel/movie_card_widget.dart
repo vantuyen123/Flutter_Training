@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_db_app/common/constants/route_constants.dart';
 import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/data/core/api_constants.dart';
@@ -21,9 +22,7 @@ class MovieCardWidget extends StatelessWidget {
       borderRadius: BorderRadius.circular(Sizes.dimen_16.w),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => MovieDetailScreen(
-                  movieDetailArgument: MovieDetailArgument(movieId))));
+          Navigator.of(context).pushNamed(RouteList.movieDetail,arguments: MovieDetailArgument(movieId));
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(Sizes.dimen_16.w),

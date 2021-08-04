@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_db_app/common/constants/route_constants.dart';
 import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/data/core/api_constants.dart';
@@ -9,7 +10,6 @@ import 'package:movie_db_app/domain/entities/movie_entity.dart';
 import 'package:movie_db_app/presentation/blocs/favorite/favorite_bloc.dart';
 import 'package:movie_db_app/presentation/blocs/favorite/favorite_event.dart';
 import 'package:movie_db_app/presentation/journeys/movie_detail/movie_detail_argument.dart';
-import 'package:movie_db_app/presentation/journeys/movie_detail/movie_detail_screen.dart';
 
 class FavoriteMovieCardWidget extends StatelessWidget {
   final MovieEntity movie;
@@ -26,13 +26,8 @@ class FavoriteMovieCardWidget extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => MovieDetailScreen(
-                movieDetailArgument: MovieDetailArgument(movie.id),
-              ),
-            ),
-          );
+          Navigator.of(context).pushNamed(RouteList.movieDetail,
+              arguments: MovieDetailArgument(movie.id));
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(Sizes.dimen_8.w),
