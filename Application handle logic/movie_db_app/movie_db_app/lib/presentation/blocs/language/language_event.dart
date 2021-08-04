@@ -16,3 +16,4 @@ class ToggleLanguageEvent extends LanguageEvent{
   // TODO: implement props
   List<Object> get props => [language.code];
 }
+class LoadPreferredLanguageEvent extends LanguageEvent{}

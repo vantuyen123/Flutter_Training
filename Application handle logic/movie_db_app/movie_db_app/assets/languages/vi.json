@@ -14,5 +14,6 @@
   "retry": "Thử lại",
   "cast": "Dàn diễn viên",
   "watchTrailers": "Xem Trailers",
-  "noMoviesSearch": "Không tìm thấy phim, vui lòng tìm kiếm bằng từ khác"
+  "noMoviesSearch": "Không tìm thấy phim, vui lòng tìm kiếm bằng từ khác",
+  "noFavoriteMovies": "Bạn chưa có bộ phim yêu thích nào"
 }

@@ -5,7 +5,7 @@ import 'package:movie_db_app/domain/entities/movie_params.dart';
 import 'package:movie_db_app/domain/repositories/movie_repository.dart';
 import 'package:movie_db_app/domain/usecase/usecase.dart';
 
-class GetVideos extends Usecase<List<VideoEntity>,MovieParams>{
+class GetVideos extends UseCase<List<VideoEntity>,MovieParams>{
   final MovieRepository repository;
 
   GetVideos(this.repository);
