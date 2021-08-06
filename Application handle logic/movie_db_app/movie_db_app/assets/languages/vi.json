@@ -15,5 +15,15 @@
   "cast": "Dàn diễn viên",
   "watchTrailers": "Xem Trailers",
   "noMoviesSearch": "Không tìm thấy phim, vui lòng tìm kiếm bằng từ khác",
-  "noFavoriteMovies": "Bạn chưa có bộ phim yêu thích nào"
+  "noFavoriteMovies": "Bạn chưa có bộ phim yêu thích nào",
+  "username": "Tài khoản",
+  "password": "Mật khẩu",
+  "signIn": "Đăng nhập",
+  "logout": "Đăng xuất",
+  "loginToMovieApp": "Đăng nhập Movie App bằng TMBD",
+  "wrongUsernamePassword": "Tài khoản hoặc email không chính xác",
+  "noNetwork": "Không có kết nối internet",
+  "sessionDenied": "Session bị từ chối",
+  "enterTMDbUsername": "Nhập tài khoản TMDB của bạn...",
+  "enterPassword": "Nhập mật khẩu..."
 }
