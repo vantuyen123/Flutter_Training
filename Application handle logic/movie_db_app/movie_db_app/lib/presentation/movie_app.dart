@@ -9,7 +9,9 @@ import 'package:movie_db_app/presentation/app_localizations.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_bloc.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_event.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_state.dart';
+import 'package:movie_db_app/presentation/blocs/loading/loading_bloc.dart';
 import 'package:movie_db_app/presentation/blocs/login/login_bloc.dart';
+import 'package:movie_db_app/presentation/journeys/loading/loading_screen.dart';
 import 'package:movie_db_app/presentation/themes/app_color.dart';
 import 'package:movie_db_app/presentation/themes/theme_text.dart';
 import 'package:movie_db_app/presentation/widgets/fade_page_route_builder.dart';
@@ -27,6 +29,7 @@ class _MovieAppState extends State<MovieApp> {
   LanguageBloc _languageBloc;
   final _navigatorKey = GlobalKey<NavigatorState>();
   LoginBloc _loginBloc;
+  LoadingBloc _loadingBloc;
 
   @override
   void initState() {
@@ -35,12 +38,14 @@ class _MovieAppState extends State<MovieApp> {
     _languageBloc = getItInstance<LanguageBloc>();
     _languageBloc.add(LoadPreferredLanguageEvent());
     _loginBloc = getItInstance<LoginBloc>();
+    _loadingBloc = getItInstance<LoadingBloc>();
   }
 
   @override
   void dispose() {
     _languageBloc?.close();
     _loginBloc?.close();
+    _loadingBloc?.close();
     super.dispose();
   }
 
@@ -50,7 +55,8 @@ class _MovieAppState extends State<MovieApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LanguageBloc>.value(value: _languageBloc),
-        BlocProvider<LoginBloc>.value(value: _loginBloc)
+        BlocProvider<LoginBloc>.value(value: _loginBloc),
+        BlocProvider<LoadingBloc>.value(value: _loadingBloc)
       ],
       child: BlocBuilder<LanguageBloc, LanguageState>(
         builder: (context, state) {
@@ -78,7 +84,9 @@ class _MovieAppState extends State<MovieApp> {
                   GlobalWidgetsLocalizations.delegate
                 ],
                 builder: (context, child) {
-                  return child;
+                  return LoadingScreen(
+                    screen: child,
+                  );
                 },
                 initialRoute: RouteList.initial,
                 onGenerateRoute: (RouteSettings settings) {
