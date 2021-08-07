@@ -11,6 +11,7 @@ import 'package:movie_db_app/presentation/blocs/movie_tabbed/movie_tabbed_state.
 import 'package:movie_db_app/presentation/journeys/home/movie_tabbed/movie_list_view_builder.dart';
 import 'package:movie_db_app/presentation/journeys/home/movie_tabbed/movie_tabbed_constants.dart';
 import 'package:movie_db_app/presentation/journeys/home/movie_tabbed/tab_title_widget.dart';
+import 'package:movie_db_app/presentation/journeys/loading/loading_circle.dart';
 import 'package:movie_db_app/presentation/widgets/app_error_widget.dart';
 
 class MovieTabbedWidget extends StatefulWidget {
@@ -83,7 +84,13 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
                         currentTabIndex: state.currentTabIndex),
                   ),
                 ),
-              )
+              ),
+            if (state is MovieTabLoading)
+              Expanded(
+                child: Center(
+                  child: LoadingCircle(size: Sizes.dimen_100.w),
+                ),
+              ),
           ],
         ),
       );
