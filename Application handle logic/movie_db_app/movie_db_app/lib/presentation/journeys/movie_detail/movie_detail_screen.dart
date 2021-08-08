@@ -31,7 +31,7 @@ class MovieDetailScreen extends StatefulWidget {
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
   MovieDetailBloc _movieDetailBloc;
-  CastBloc _castBloc;
+  CastCubit _castBloc;
   VideosBloc _videosBloc;
   FavoriteBloc _favoriteBloc;
 

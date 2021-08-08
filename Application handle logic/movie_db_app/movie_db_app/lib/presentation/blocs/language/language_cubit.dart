@@ -1,27 +1,39 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_db_app/common/constants/language.dart';
+import 'package:movie_db_app/domain/entities/language_entity.dart';
 import 'package:movie_db_app/domain/entities/no_params.dart';
 import 'package:movie_db_app/domain/usecase/get_preferred_language.dart';
 import 'package:movie_db_app/domain/usecase/update_language.dart';
 
-import 'language_event.dart';
-import 'language_state.dart';
-
-class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
+class LanguageCubit extends Cubit<Locale> {
   final GetPreferredLanguage getPreferredLanguage;
   final UpdateLanguage updateLanguage;
 
-  LanguageBloc({
+  LanguageCubit({
     @required this.getPreferredLanguage,
     @required this.updateLanguage,
   }) : super(
-          LanguageLoaded(
-            Locale(Languages.languages[0].code),
-          ),
+          Locale(Languages.languages[0].code),
         );
 
-  @override
+  void toggleLanguage(LanguageEntity language) async {
+    await updateLanguage(language.code);
+    loadPreferredLanguage();
+  }
+
+  void loadPreferredLanguage() async {
+    final response = await getPreferredLanguage(NoParams());
+    emit(
+      response.fold(
+        (l) => null,
+        (r) => Locale(r),
+      ),
+    );
+  }
+
+/*@override
   Stream<LanguageState> mapEventToState(
     LanguageEvent event,
   ) async* {
@@ -35,5 +47,5 @@ class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
         (r) => LanguageLoaded(Locale(r)),
       );
     }
-  }
+  }*/
 }
