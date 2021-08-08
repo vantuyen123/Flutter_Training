@@ -7,8 +7,7 @@ import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/constants/translation_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/common/extensions/string_extensions.dart';
-import 'package:movie_db_app/presentation/blocs/language/language_bloc.dart';
-import 'package:movie_db_app/presentation/blocs/language/language_event.dart';
+import 'package:movie_db_app/presentation/blocs/language/language_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/login/login_bloc.dart';
 import 'package:movie_db_app/presentation/blocs/login/login_event.dart';
 import 'package:movie_db_app/presentation/blocs/login/login_state.dart';
@@ -55,11 +54,9 @@ class NavigationDrawer extends StatelessWidget {
                 title: TranslationConstants.language.t(context),
                 children: Languages.languages.map((e) => e.value).toList(),
                 onPressed: (index) {
-                  BlocProvider.of<LanguageBloc>(context).add(
-                    ToggleLanguageEvent(
+                  BlocProvider.of<LanguageCubit>(context).toggleLanguage(
                       Languages.languages[index],
-                    ),
-                  );
+                    );
                 }),
             NavigationListItem(
                 title: TranslationConstants.feedback.t(context),

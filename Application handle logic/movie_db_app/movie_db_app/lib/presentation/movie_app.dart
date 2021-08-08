@@ -6,10 +6,8 @@ import 'package:movie_db_app/common/constants/language.dart';
 import 'package:movie_db_app/common/constants/route_constants.dart';
 import 'package:movie_db_app/di/get_it.dart';
 import 'package:movie_db_app/presentation/app_localizations.dart';
-import 'package:movie_db_app/presentation/blocs/language/language_bloc.dart';
-import 'package:movie_db_app/presentation/blocs/language/language_event.dart';
-import 'package:movie_db_app/presentation/blocs/language/language_state.dart';
-import 'package:movie_db_app/presentation/blocs/loading/loading_bloc.dart';
+import 'package:movie_db_app/presentation/blocs/language/language_cubit.dart';
+import 'package:movie_db_app/presentation/blocs/loading/loading_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/login/login_bloc.dart';
 import 'package:movie_db_app/presentation/journeys/loading/loading_screen.dart';
 import 'package:movie_db_app/presentation/themes/app_color.dart';
@@ -26,26 +24,26 @@ class MovieApp extends StatefulWidget {
 }
 
 class _MovieAppState extends State<MovieApp> {
-  LanguageBloc _languageBloc;
+  LanguageCubit _languageCubit;
   final _navigatorKey = GlobalKey<NavigatorState>();
   LoginBloc _loginBloc;
-  LoadingBloc _loadingBloc;
+  LoadingCubit _loadingCubit;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _languageBloc = getItInstance<LanguageBloc>();
-    _languageBloc.add(LoadPreferredLanguageEvent());
+    _languageCubit = getItInstance<LanguageCubit>();
+    _languageCubit.loadPreferredLanguage();
     _loginBloc = getItInstance<LoginBloc>();
-    _loadingBloc = getItInstance<LoadingBloc>();
+    _loadingCubit = getItInstance<LoadingCubit>();
   }
 
   @override
   void dispose() {
-    _languageBloc?.close();
+    _languageCubit?.close();
     _loginBloc?.close();
-    _loadingBloc?.close();
+    _loadingCubit?.close();
     super.dispose();
   }
 
@@ -54,16 +52,15 @@ class _MovieAppState extends State<MovieApp> {
     ScreenUtil.init();
     return MultiBlocProvider(
       providers: [
-        BlocProvider<LanguageBloc>.value(value: _languageBloc),
+        BlocProvider<LanguageCubit>.value(value: _languageCubit),
         BlocProvider<LoginBloc>.value(value: _loginBloc),
-        BlocProvider<LoadingBloc>.value(value: _loadingBloc)
+        BlocProvider<LoadingCubit>.value(value: _loadingCubit)
       ],
-      child: BlocBuilder<LanguageBloc, LanguageState>(
-        builder: (context, state) {
-          if (state is LanguageLoaded) {
+      child: BlocBuilder<LanguageCubit, Locale>(
+        builder: (context, locale) {
             return WiredashApp(
               navigatorKey: _navigatorKey,
-              languageCode: state.locale.languageCode,
+              languageCode: locale.languageCode,
               child: MaterialApp(
                 navigatorKey: _navigatorKey,
                 debugShowCheckedModeBanner: false,
@@ -77,7 +74,7 @@ class _MovieAppState extends State<MovieApp> {
                     appBarTheme: const AppBarTheme(elevation: 0)),
                 supportedLocales:
                     Languages.languages.map((e) => Locale(e.code)).toList(),
-                locale: state.locale,
+                locale: locale,
                 localizationsDelegates: [
                   AppLocalizations.delegate,
                   GlobalMaterialLocalizations.delegate,
@@ -99,9 +96,6 @@ class _MovieAppState extends State<MovieApp> {
                 },
               ),
             );
-          } else {
-            return const SizedBox.shrink();
-          }
         },
       ),
     );

@@ -4,8 +4,7 @@ import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/common/screenutil/screenutil.dart';
 import 'package:movie_db_app/domain/entities/movie_entity.dart';
-import 'package:movie_db_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
-import 'package:movie_db_app/presentation/blocs/movie_backdrop/movie_backdrop_event.dart';
+import 'package:movie_db_app/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
 import 'package:movie_db_app/presentation/journeys/home/movie_carousel/animation_movie_card_widget.dart';
 
 class MoviePageView extends StatefulWidget {
@@ -48,7 +47,7 @@ class _MoviePageViewState extends State<MoviePageView> {
           controller: _pageController,
           itemCount: widget.movies.length ?? 0,
           onPageChanged: (index) {
-            BlocProvider.of<MovieBackdropBloc>(context).add(MovieBackdropChangedEvent(widget.movies[index]));
+            BlocProvider.of<MovieBackdropCubit>(context).backdropChanged(widget.movies[index]);
           },
           itemBuilder: (context, index) {
             final MovieEntity movie = widget.movies[index];
