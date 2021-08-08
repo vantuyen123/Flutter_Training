@@ -7,7 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/screenutil/screenutil.dart';
 import 'package:movie_db_app/data/core/api_constants.dart';
-import 'package:movie_db_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
+import 'package:movie_db_app/domain/entities/movie_entity.dart';
+import 'package:movie_db_app/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/presentation/blocs/movie_backdrop/movie_backdrop_state.dart';
 
@@ -26,17 +27,15 @@ class MovieBackdropWidget extends StatelessWidget {
             FractionallySizedBox(
               heightFactor: 1,
               widthFactor: 1,
-              child: BlocBuilder<MovieBackdropBloc, MovieBackdropState>(
-                builder: (context, state) {
-                  if (state is MovieBackdropChanged) {
+              child: BlocBuilder<MovieBackdropCubit, MovieEntity>(
+                builder: (context, movie) {
+
                     return CachedNetworkImage(
                       imageUrl:
-                          '${ApiConstants.BASE_IMAGE_URL}${state.movie.backdropPath}',
+                          '${ApiConstants.BASE_IMAGE_URL}${movie?.backdropPath}',
                       fit: BoxFit.cover,
                     );
                   }
-                  return const SizedBox.shrink();
-                },
               ),
             ),
             BackdropFilter(filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),

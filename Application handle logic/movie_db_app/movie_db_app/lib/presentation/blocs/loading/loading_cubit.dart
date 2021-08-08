@@ -1,10 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_db_app/presentation/blocs/loading/loading_event.dart';
-import 'package:movie_db_app/presentation/blocs/loading/loading_state.dart';
 
-class LoadingBloc extends Bloc<LoadingEvent,LoadingState>{
-  LoadingBloc() : super(LoadingInitial());
+class LoadingCubit extends Cubit<bool>{
+  LoadingCubit() : super(false);
 
+  void show() => emit(true);
+
+  void hide() => emit(false);
+/*
   @override
   Stream<LoadingState> mapEventToState(LoadingEvent event) async* {
     if(event is StartLoading){
@@ -12,6 +14,6 @@ class LoadingBloc extends Bloc<LoadingEvent,LoadingState>{
     }else if(event is FinishLoading){
       yield LoadingFinished();
     }
-  }
+  }*/
 
 }

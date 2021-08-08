@@ -12,7 +12,7 @@ import 'package:movie_db_app/presentation/themes/theme_text.dart';
 class CastWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CastBloc, CastState>(builder: (context, state) {
+    return BlocBuilder<CastCubit, CastState>(builder: (context, state) {
       if (state is CastLoaded) {
         return Container(
           height: Sizes.dimen_105.h,
