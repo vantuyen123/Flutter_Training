@@ -8,7 +8,7 @@ import 'package:movie_db_app/di/get_it.dart';
 import 'package:movie_db_app/presentation/app_localizations.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/loading/loading_cubit.dart';
-import 'package:movie_db_app/presentation/blocs/login/login_bloc.dart';
+import 'package:movie_db_app/presentation/blocs/login/login_cubit.dart';
 import 'package:movie_db_app/presentation/journeys/loading/loading_screen.dart';
 import 'package:movie_db_app/presentation/themes/app_color.dart';
 import 'package:movie_db_app/presentation/themes/theme_text.dart';
@@ -26,7 +26,7 @@ class MovieApp extends StatefulWidget {
 class _MovieAppState extends State<MovieApp> {
   LanguageCubit _languageCubit;
   final _navigatorKey = GlobalKey<NavigatorState>();
-  LoginBloc _loginBloc;
+  LoginCubit _loginBloc;
   LoadingCubit _loadingCubit;
 
   @override
@@ -35,7 +35,7 @@ class _MovieAppState extends State<MovieApp> {
     super.initState();
     _languageCubit = getItInstance<LanguageCubit>();
     _languageCubit.loadPreferredLanguage();
-    _loginBloc = getItInstance<LoginBloc>();
+    _loginBloc = getItInstance<LoginCubit>();
     _loadingCubit = getItInstance<LoadingCubit>();
   }
 
@@ -53,7 +53,7 @@ class _MovieAppState extends State<MovieApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LanguageCubit>.value(value: _languageCubit),
-        BlocProvider<LoginBloc>.value(value: _loginBloc),
+        BlocProvider<LoginCubit>.value(value: _loginBloc),
         BlocProvider<LoadingCubit>.value(value: _loadingCubit)
       ],
       child: BlocBuilder<LanguageCubit, Locale>(

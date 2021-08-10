@@ -5,8 +5,7 @@ import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/domain/entities/movie_detail_entity.dart';
 import 'package:movie_db_app/domain/entities/movie_entity.dart';
-import 'package:movie_db_app/presentation/blocs/favorite/favorite_bloc.dart';
-import 'package:movie_db_app/presentation/blocs/favorite/favorite_event.dart';
+import 'package:movie_db_app/presentation/blocs/favorite/favorite_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/favorite/favorite_state.dart';
 
 class MovieDetailAppBar extends StatelessWidget {
@@ -30,15 +29,15 @@ class MovieDetailAppBar extends StatelessWidget {
             size: Sizes.dimen_12.h,
           ),
         ),
-        BlocBuilder<FavoriteBloc, FavoriteState>(builder: (context, state) {
+        BlocBuilder<FavoriteCubit, FavoriteState>(builder: (context, state) {
           if (state is IsFavoriteMovie) {
             return GestureDetector(
-              onTap: () => BlocProvider.of<FavoriteBloc>(context).add(
-                ToggleFavoriteMovieEvent(
-                  MovieEntity.fromMovieDetailEntity(movieDetailEntity),
-                  state.isMovieFavorite,
-                ),
+              onTap: () =>
+                  BlocProvider.of<FavoriteCubit>(context).toggleFavoriteMovie(
+                MovieEntity.fromMovieDetailEntity(movieDetailEntity),
+                state.isMovieFavorite,
               ),
+
               child: Icon(
                 state.isMovieFavorite ? Icons.favorite : Icons.favorite_border,
                 color: Colors.white,

@@ -9,56 +9,59 @@ import 'package:movie_db_app/domain/usecase/check_if_movie_favorite.dart';
 import 'package:movie_db_app/domain/usecase/delete_favorite_movies.dart';
 import 'package:movie_db_app/domain/usecase/get_favorite_movies.dart';
 import 'package:movie_db_app/domain/usecase/save_movie.dart';
-import 'package:movie_db_app/presentation/blocs/favorite/favorite_event.dart';
 import 'package:movie_db_app/presentation/blocs/favorite/favorite_state.dart';
 
-class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
+class FavoriteCubit extends Cubit<FavoriteState> {
   final SaveMovie saveMovie;
   final GetFavoriteMovies getFavoriteMovies;
   final DeleteFavoriteMovie deleteFavoriteMovie;
   final CheckIfFavoriteMovie checkIfMovieFavorite;
 
-  FavoriteBloc(
+  FavoriteCubit(
       {@required this.saveMovie,
       @required this.getFavoriteMovies,
       @required this.deleteFavoriteMovie,
       @required this.checkIfMovieFavorite})
       : super(FavoriteInitial());
 
-  @override
-  Stream<FavoriteState> mapEventToState(FavoriteEvent event) async* {
-    if (event is ToggleFavoriteMovieEvent) {
-      if (event.isFavorite) {
-        await deleteFavoriteMovie(MovieParams(event.movieEntity.id));
-      } else {
-        await saveMovie(event.movieEntity);
-      }
-      final response =
-          await checkIfMovieFavorite(MovieParams(event.movieEntity.id));
-      yield response.fold(
-        (l) => FavoriteMoviesError(),
-        (r) => IsFavoriteMovie(r),
-      );
-    } else if (event is LoadFavoriteMovieEvent) {
-      yield* _fetchLoadFavoriteMovies();
-    } else if (event is DeleteFavoriteMovieEvent) {
-      await deleteFavoriteMovie(MovieParams(event.movieId));
-      yield* _fetchLoadFavoriteMovies();
-    } else if (event is CheckIfFavoriteMovieEvent) {
-      final response = await checkIfMovieFavorite(MovieParams(event.movieId));
-      yield response.fold(
-        (l) => FavoriteMoviesError(),
-        (r) => IsFavoriteMovie(r),
-      );
+  void toggleFavoriteMovie(MovieEntity movieEntity, bool isFavorite) async {
+    if (isFavorite) {
+      await deleteFavoriteMovie(MovieParams(movieEntity.id));
+    } else {
+      await saveMovie(movieEntity);
     }
-  }
-
-  Stream<FavoriteState> _fetchLoadFavoriteMovies() async* {
-    final Either<AppError, List<MovieEntity>> response =
-        await getFavoriteMovies(NoParams());
-    yield response.fold(
-      (l) => FavoriteMoviesError(),
-      (r) => FavoriteMoviesLoaded(r),
+    final response = await checkIfMovieFavorite(MovieParams(movieEntity.id));
+    emit(
+      response.fold(
+        (l) => FavoriteMoviesError(),
+        (r) => IsFavoriteMovie(r),
+      ),
     );
   }
+
+  void loadFavoriteMovie() async {
+    final Either<AppError, List<MovieEntity>> response =
+        await getFavoriteMovies(NoParams());
+    emit(
+      response.fold(
+        (l) => FavoriteMoviesError(),
+        (r) => FavoriteMoviesLoaded(r),
+      ),
+    );
+  }
+
+  void deleteMovie(int movieId) async {
+    await deleteFavoriteMovie(MovieParams(movieId));
+    loadFavoriteMovie();
+  }
+
+  void checkIfMovieFavorites(int movieId) async {
+    final response = await checkIfMovieFavorite(MovieParams(movieId));
+    emit(response.fold(
+          (l) => FavoriteMoviesError(),
+          (r) => IsFavoriteMovie(r),
+    ));
+  }
+
+
 }

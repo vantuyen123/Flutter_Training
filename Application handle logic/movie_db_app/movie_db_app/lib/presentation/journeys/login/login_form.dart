@@ -6,8 +6,7 @@ import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/constants/translation_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/common/extensions/string_extensions.dart';
-import 'package:movie_db_app/presentation/blocs/login/login_bloc.dart';
-import 'package:movie_db_app/presentation/blocs/login/login_event.dart';
+import 'package:movie_db_app/presentation/blocs/login/login_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/login/login_state.dart';
 import 'package:movie_db_app/presentation/themes/theme_text.dart';
 import 'package:movie_db_app/presentation/widgets/button.dart';
@@ -25,8 +24,6 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void initState() {
-
-
     _userNameController = TextEditingController();
     _passwordController = TextEditingController();
 
@@ -40,34 +37,12 @@ class _LoginFormState extends State<LoginForm> {
       setState(() {
         enableSignIn = _userNameController.text.isNotEmpty &&
             _passwordController.text.isNotEmpty;
-
       });
     });
     super.initState();
-
   }
-/*
-
-  void addListener() {
-    _userNameController.addListener(() {
-      setState(() {
-        enableSignIn = _userNameController.text.isNotEmpty &&
-            _passwordController.text.isNotEmpty;
-      });
-    });
-    _passwordController.addListener(() {
-      setState(() {
-        enableSignIn = _userNameController.text.isNotEmpty &&
-            _passwordController.text.isNotEmpty;
-      });
-    });
-  }
-*/
-
   @override
   void dispose() {
-    // _userNameController?.clear();
-    // _passwordController?.clear();
 
     super.dispose();
   }
@@ -104,7 +79,7 @@ class _LoginFormState extends State<LoginForm> {
               controller: _passwordController,
               isPasswordField: true,
             ),
-            BlocConsumer<LoginBloc, LoginState>(
+            BlocConsumer<LoginCubit, LoginState>(
               buildWhen: (previous, current) => current is LoginError,
               builder: (context, state) {
                 if (state is LoginError) {
@@ -124,11 +99,9 @@ class _LoginFormState extends State<LoginForm> {
             Button(
               onPressed: enableSignIn
                   ? () {
-                      BlocProvider.of<LoginBloc>(context).add(
-                        LoginInitiateEvent(
-                          _userNameController.text,
-                          _passwordController.text,
-                        ),
+                      BlocProvider.of<LoginCubit>(context).initiateLogin(
+                        _userNameController.text,
+                        _passwordController.text,
                       );
                     }
                   : null,

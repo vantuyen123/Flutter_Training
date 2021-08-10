@@ -5,12 +5,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_db_app/common/constants/size_constants.dart';
+import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/common/screenutil/screenutil.dart';
 import 'package:movie_db_app/data/core/api_constants.dart';
 import 'package:movie_db_app/domain/entities/movie_entity.dart';
 import 'package:movie_db_app/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
-import 'package:movie_db_app/common/extensions/size_extensions.dart';
-import 'package:movie_db_app/presentation/blocs/movie_backdrop/movie_backdrop_state.dart';
 
 class MovieBackdropWidget extends StatelessWidget {
   @override

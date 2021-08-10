@@ -22,17 +22,4 @@ class CastCubit extends Cubit<CastState> {
       (r) => CastLoaded(casts: r),
     ));
   }
-
-// @override
-// Stream<CastState> mapEventToState(CastEvent event) async* {
-//   if (event is LoadCastEvent) {
-//     Either<AppError, List<CastEntity>> eitherResponse =
-//         await getCasts(MovieParams(event.movieId));
-//
-//     yield eitherResponse.fold(
-//       (l) => CastError(),
-//       (r) => CastLoaded(casts: r),
-//     );
-//   }
-// }
 }

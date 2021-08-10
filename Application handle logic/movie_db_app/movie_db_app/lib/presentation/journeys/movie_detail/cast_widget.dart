@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/data/core/api_constants.dart';
-import 'package:movie_db_app/presentation/blocs/cast/cast_bloc.dart';
+import 'package:movie_db_app/presentation/blocs/cast/cast_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/cast/cast_state.dart';
 import 'package:movie_db_app/presentation/themes/theme_text.dart';
 
