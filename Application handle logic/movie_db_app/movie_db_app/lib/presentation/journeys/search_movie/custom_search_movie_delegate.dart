@@ -5,8 +5,7 @@ import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/constants/translation_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/common/extensions/string_extensions.dart';
-import 'package:movie_db_app/presentation/blocs/search_movie/search_bloc.dart';
-import 'package:movie_db_app/presentation/blocs/search_movie/search_event.dart';
+import 'package:movie_db_app/presentation/blocs/search_movie/search_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/search_movie/search_state.dart';
 import 'package:movie_db_app/presentation/journeys/search_movie/search_movie_card.dart';
 import 'package:movie_db_app/presentation/themes/app_color.dart';
@@ -14,9 +13,9 @@ import 'package:movie_db_app/presentation/themes/theme_text.dart';
 import 'package:movie_db_app/presentation/widgets/app_error_widget.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
-  final SearchMovieBloc searchMovieBloc;
+  final SearchMovieCubit searchMovieCubit;
 
-  CustomSearchDelegate(this.searchMovieBloc);
+  CustomSearchDelegate(this.searchMovieCubit);
 
   @override
   ThemeData appBarTheme(BuildContext context) {
@@ -58,14 +57,12 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    searchMovieBloc.add(
-      SearchTermChangedEvent(query),
-    );
-    return BlocBuilder<SearchMovieBloc, SearchMovieState>(
-        bloc: searchMovieBloc, builder: (context, state) {
+    searchMovieCubit.searchTermChanged(query);
+    return BlocBuilder<SearchMovieCubit, SearchMovieState>(
+        bloc: searchMovieCubit, builder: (context, state) {
       if (state is SearchMovieError) {
         return AppErrorWidget(errorType: state.errorType,
-            onPressed: () => searchMovieBloc?.add(SearchTermChangedEvent(query)));
+            onPressed: () => searchMovieCubit?.searchTermChanged(query));
       }else if( state is SearchMovieLoaded){
         final movies = state.movies;
         if(movies.isEmpty){

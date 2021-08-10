@@ -8,8 +8,7 @@ import 'package:movie_db_app/common/constants/translation_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/common/extensions/string_extensions.dart';
 import 'package:movie_db_app/presentation/blocs/language/language_cubit.dart';
-import 'package:movie_db_app/presentation/blocs/login/login_bloc.dart';
-import 'package:movie_db_app/presentation/blocs/login/login_event.dart';
+import 'package:movie_db_app/presentation/blocs/login/login_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/login/login_state.dart';
 import 'package:movie_db_app/presentation/journeys/drawer/navigation_expanded_list_tile.dart';
 import 'package:movie_db_app/presentation/journeys/drawer/navigation_list_item.dart';
@@ -70,7 +69,7 @@ class NavigationDrawer extends StatelessWidget {
                   Navigator.of(context).pop();
                   _showDialog(context);
                 }),
-            BlocListener<LoginBloc, LoginState>(
+            BlocListener<LoginCubit, LoginState>(
               listenWhen: (previous, current) => current is LogoutSuccess,
               listener: (context, state) {
                 Navigator.of(context).pushNamedAndRemoveUntil(
@@ -79,7 +78,7 @@ class NavigationDrawer extends StatelessWidget {
               child: NavigationListItem(
                   title: TranslationConstants.logout.t(context),
                   onPressed: () {
-                    BlocProvider.of<LoginBloc>(context).add(LogoutEvent());
+                    BlocProvider.of<LoginCubit>(context).logout();
                   }),
             )
           ],
