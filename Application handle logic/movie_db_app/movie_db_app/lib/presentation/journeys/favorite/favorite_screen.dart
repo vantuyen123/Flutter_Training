@@ -6,8 +6,7 @@ import 'package:movie_db_app/common/constants/translation_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart ';
 import 'package:movie_db_app/common/extensions/string_extensions.dart';
 import 'package:movie_db_app/di/get_it.dart';
-import 'package:movie_db_app/presentation/blocs/favorite/favorite_bloc.dart';
-import 'package:movie_db_app/presentation/blocs/favorite/favorite_event.dart';
+import 'package:movie_db_app/presentation/blocs/favorite/favorite_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/favorite/favorite_state.dart';
 
 import 'favorite_movie_grid_view.dart';
@@ -18,13 +17,13 @@ class FavoriteScreen extends StatefulWidget {
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
-  FavoriteBloc _favoriteBloc;
+  FavoriteCubit _favoriteBloc;
 
   @override
   void initState() {
     super.initState();
-    _favoriteBloc = getItInstance<FavoriteBloc>();
-    _favoriteBloc.add(LoadFavoriteMovieEvent());
+    _favoriteBloc = getItInstance<FavoriteCubit>();
+    _favoriteBloc.loadFavoriteMovie();
   }
 
   @override
@@ -53,7 +52,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       ),
       body: BlocProvider.value(
         value: _favoriteBloc,
-        child: BlocBuilder<FavoriteBloc,FavoriteState>(
+        child: BlocBuilder<FavoriteCubit,FavoriteState>(
           builder: (BuildContext context, state) {
             if(state is FavoriteMoviesLoaded){
               if(state.movies.isEmpty){
