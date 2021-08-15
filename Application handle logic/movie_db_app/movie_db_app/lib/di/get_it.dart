@@ -36,7 +36,7 @@ import 'package:movie_db_app/presentation/blocs/login/login_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/movie_detail/movie_detail_cubit.dart';
-import 'package:movie_db_app/presentation/blocs/movie_tabbed/movie_tabbed_bloc.dart';
+import 'package:movie_db_app/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/search_movie/search_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/videos/videos_cubit.dart';
 
