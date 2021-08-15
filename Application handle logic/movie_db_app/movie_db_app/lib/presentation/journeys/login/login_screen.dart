@@ -11,17 +11,19 @@ class LoginScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Column(
-        children: [
-          Center(
-            child: Padding(
-              padding: EdgeInsets.only(top: Sizes.dimen_32.h),
-              child: Logo(height: Sizes.dimen_12.h),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: Padding(
+                padding: EdgeInsets.only(top: Sizes.dimen_32.h),
+                child: Logo(height: Sizes.dimen_12.h),
+              ),
             ),
-          ),
-          LoginForm(),
+            LoginForm(),
 
-        ],
+          ],
+        ),
       ),
     );
   }
