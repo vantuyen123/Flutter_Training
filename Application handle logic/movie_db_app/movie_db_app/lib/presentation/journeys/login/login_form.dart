@@ -49,67 +49,65 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: Sizes.dimen_32.w,
-          vertical: Sizes.dimen_24.h,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(bottom: Sizes.dimen_8.h),
-              child: Text(
-                TranslationConstants.loginToMovieApp.t(context),
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline5.copyWith(
-                      fontSize: Sizes.dimen_10.h,
-                    ),
-              ),
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: Sizes.dimen_32.w,
+        vertical: Sizes.dimen_24.h,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(bottom: Sizes.dimen_8.h),
+            child: Text(
+              TranslationConstants.loginToMovieApp.t(context),
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headline5.copyWith(
+                    fontSize: Sizes.dimen_10.h,
+                  ),
             ),
-            LabelFieldWidget(
-              label: TranslationConstants.username.t(context),
-              hintText: TranslationConstants.enterTMDbUsername.t(context),
-              controller: _userNameController,
-            ),
-            LabelFieldWidget(
-              label: TranslationConstants.password.t(context),
-              hintText: TranslationConstants.enterPassword.t(context),
-              controller: _passwordController,
-              isPasswordField: true,
-            ),
-            BlocConsumer<LoginCubit, LoginState>(
-              buildWhen: (previous, current) => current is LoginError,
-              builder: (context, state) {
-                if (state is LoginError) {
-                  return Text(
-                    state.message.t(context),
-                    style: Theme.of(context).textTheme.orangeSubtitle1,
-                  );
-                }
-                return const SizedBox.shrink();
-              },
-              listenWhen: (previous, current) => current is LoginSuccess,
-              listener: (context, state) {
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(RouteList.home, (route) => false);
-              },
-            ),
-            Button(
-              onPressed: enableSignIn
-                  ? () {
-                      BlocProvider.of<LoginCubit>(context).initiateLogin(
-                        _userNameController.text,
-                        _passwordController.text,
-                      );
-                    }
-                  : null,
-              text: TranslationConstants.signIn,
-              isEnable: enableSignIn,
-            )
-          ],
-        ),
+          ),
+          LabelFieldWidget(
+            label: TranslationConstants.username.t(context),
+            hintText: TranslationConstants.enterTMDbUsername.t(context),
+            controller: _userNameController,
+          ),
+          LabelFieldWidget(
+            label: TranslationConstants.password.t(context),
+            hintText: TranslationConstants.enterPassword.t(context),
+            controller: _passwordController,
+            isPasswordField: true,
+          ),
+          BlocConsumer<LoginCubit, LoginState>(
+            buildWhen: (previous, current) => current is LoginError,
+            builder: (context, state) {
+              if (state is LoginError) {
+                return Text(
+                  state.message.t(context),
+                  style: Theme.of(context).textTheme.orangeSubtitle1,
+                );
+              }
+              return const SizedBox.shrink();
+            },
+            listenWhen: (previous, current) => current is LoginSuccess,
+            listener: (context, state) {
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil(RouteList.home, (route) => false);
+            },
+          ),
+          Button(
+            onPressed: enableSignIn
+                ? () {
+                    BlocProvider.of<LoginCubit>(context).initiateLogin(
+                      _userNameController.text,
+                      _passwordController.text,
+                    );
+                  }
+                : null,
+            text: TranslationConstants.signIn,
+            isEnable: enableSignIn,
+          )
+        ],
       ),
     );
   }
