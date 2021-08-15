@@ -5,7 +5,7 @@ import 'package:movie_db_app/common/constants/size_constants.dart';
 import 'package:movie_db_app/common/constants/translation_constants.dart';
 import 'package:movie_db_app/common/extensions/size_extensions.dart';
 import 'package:movie_db_app/common/extensions/string_extensions.dart';
-import 'package:movie_db_app/presentation/blocs/movie_tabbed/movie_tabbed_bloc.dart';
+import 'package:movie_db_app/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
 import 'package:movie_db_app/presentation/blocs/movie_tabbed/movie_tabbed_state.dart';
 import 'package:movie_db_app/presentation/journeys/home/movie_tabbed/movie_list_view_builder.dart';
 import 'package:movie_db_app/presentation/journeys/home/movie_tabbed/movie_tabbed_constants.dart';
