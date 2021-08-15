@@ -40,6 +40,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   path_provider:
+  mockito:
+  test:
+  bloc_test:
 
 
 dev_dependencies:
@@ -48,6 +51,7 @@ dev_dependencies:
   flutter_native_splash: ^1.2.1
   hive_generator: ^1.1.0
   build_runner:
+
 
 flutter_native_splash:
   color: "#141221"
