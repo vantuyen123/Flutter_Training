@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:i_game_database/bloc/switch_bloc.dart';
+import 'package:i_game_database/screens/discover_screens/discover_screen_list.dart';
 import 'package:i_game_database/style/theme.dart' as Style;
+import 'package:i_game_database/widgets/home_slider.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -54,10 +56,11 @@ class _MainScreenState extends State<MainScreen> {
             });
           },
           children: [
-            Container(
-              child: Center(
-                child: Text("Screen 1"),
-              ),
+            Column(
+              children: [
+                // HomeSlider(),
+                DiscoverScreenList(),
+              ],
             ),
             Container(
               child: Center(

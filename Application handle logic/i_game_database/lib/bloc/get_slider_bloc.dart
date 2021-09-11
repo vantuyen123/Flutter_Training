@@ -14,6 +14,9 @@ class GetSliderBloc{
   dispose(){
     _subject.close();
   }
+
+  BehaviorSubject<GameResponse> get subject => _subject;
+
 }
 
 final getSliderBloc = GetSliderBloc();

@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:i_game_database/model/game_response.dart';
 
 class GameRepository {
-  static String mainUrl = "https://api-v3.igdb.com";
+  static String mainUrl = "https://api.igdb.com/v4/";
   var gameListUrl = '$mainUrl/games';
   final String apiKey = "x8ea6zui9j2lyylcs6rave7hbg47py";
 
@@ -15,7 +15,8 @@ class GameRepository {
           "user-key": "$apiKey",
         },
         body:
-            "fields artworks,bundles,category,checksum,collection,cover.*,created_at,first_release_date,follows,game_engines.*,game_modes.*,genres.*,hypes,keywords.*,multiplayer_modes,name,parent_game,platforms.*, platforms.platform_logo.*, player_perspectives.*,popularity,rating,rating_count,screenshots.*,slug,standalone_expansions,status,storyline,summary,tags,time_to_beat,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos.*; sort popularity desc;");
+            "fields artworks,bundles,category,checksum,collection,cover.*,created_at,first_release_date,follows,game_engines.*,game_modes.*,genres.*,hypes,keywords.*,multiplayer_modes,name,parent_game,platforms.*, platforms.platform_logo.*, player_perspectives.*,popularity,rating,rating_count,screenshots.*,slug,standalone_expansions,status,storyline,summary,tags,time_to_beat,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos.*; sort popularity desc;"
+    );
     print("${response.statusCode}");
     return GameResponse.fromJson(jsonDecode(response.body));
   }
