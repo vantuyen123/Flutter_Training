@@ -1,0 +1,4 @@
+#Sat Sep 11 01:41:56 ICT 2021
+base.0=D\:\\Flutter_Training\\Application handle logic\\i_game_database\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
