@@ -17,10 +17,10 @@
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_5/build" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_6/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_6/build" />
-      <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_7/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_7/build" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/movie_app/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/Flutter UI/movie_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_8/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter UI/flutter_ui_8/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,0 +1,21 @@
+Index: ../../Application handle logic/movie_db_app/movie_db_app/lib/presentation/widgets/routes.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:flutter/cupertino.dart';\r\nimport 'package:movie_db_app/common/constants/route_constants.dart';\r\nimport 'package:movie_db_app/presentation/journeys/favorite/favorite_screen.dart';\r\nimport 'package:movie_db_app/presentation/journeys/home/home_screen.dart';\r\nimport 'package:movie_db_app/presentation/journeys/login/login_screen.dart';\r\nimport 'package:movie_db_app/presentation/journeys/movie_detail/movie_detail_screen.dart';\r\nimport 'package:movie_db_app/presentation/journeys/watch_video/watch_video_screen.dart';\r\n\r\nclass Routes {\r\n  static Map<String, WidgetBuilder> getRoutes(RouteSettings settings) => {\r\n        RouteList.initial:(context) => LoginScreen(),\r\n        // RouteList.login:(context) => LoginScreen(),\r\n        RouteList.home: (context) => HomeScreen(),\r\n        RouteList.movieDetail: (context) =>\r\n            MovieDetailScreen(movieDetailArgument: settings.arguments),\r\n        RouteList.watchTrailer: (context) =>\r\n            WatchVideoScreen(watchVideoArguments: settings.arguments),\r\n          RouteList.favorite: (context) => FavoriteScreen(),\r\n      };\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../../Application handle logic/movie_db_app/movie_db_app/lib/presentation/widgets/routes.dart b/../../Application handle logic/movie_db_app/movie_db_app/lib/presentation/widgets/routes.dart
+--- a/../../Application handle logic/movie_db_app/movie_db_app/lib/presentation/widgets/routes.dart	(revision c0710ebfe89985a1f0d054ea4906f59071fbf1db)
++++ b/../../Application handle logic/movie_db_app/movie_db_app/lib/presentation/widgets/routes.dart	(date 1631529837563)
+@@ -8,8 +8,8 @@
+ 
+ class Routes {
+   static Map<String, WidgetBuilder> getRoutes(RouteSettings settings) => {
+-        RouteList.initial:(context) => LoginScreen(),
+-        // RouteList.login:(context) => LoginScreen(),
++        RouteList.initial:(context) => HomeScreen(),
++        RouteList.login:(context) => LoginScreen(),
+         RouteList.home: (context) => HomeScreen(),
+         RouteList.movieDetail: (context) =>
+             MovieDetailScreen(movieDetailArgument: settings.arguments),
